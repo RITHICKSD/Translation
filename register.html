@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Account — LinguaGlobal Portal</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="auth-page">
+
+  <!-- Top Right Toggles -->
+  <div class="auth-controls">
+    <button class="theme-toggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+    <button class="rtl-toggle" aria-label="Toggle RTL">RTL</button>
+  </div>
+
+  <div class="blob blob-primary" style="position:fixed; top:-100px; inset-inline-start:-100px; width:300px; height:300px;"></div>
+  <div class="blob blob-accent" style="position:fixed; bottom:-100px; inset-inline-end:-100px; width:300px; height:300px;"></div>
+
+  <!-- Register Card -->
+  <div class="auth-card">
+    <div class="auth-header">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-globe"></i></div>
+        <span class="logo-text">Globa<span>Ze</span></span>
+      </a>
+      <h2 class="auth-title">Create Client Account</h2>
+      <p class="auth-subtitle">Start uploading documents & managing translations</p>
+    </div>
+
+    <!-- Social Signup -->
+    <div class="social-auth">
+      <button class="btn-social">
+        <i class="fa-brands fa-google text-danger"></i> Google
+      </button>
+      <button class="btn-social">
+        <i class="fa-brands fa-apple"></i> Apple
+      </button>
+    </div>
+
+    <div class="divider-text mb-3">or register with email</div>
+
+    <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" placeholder="John Smith" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Work Email</label>
+        <input type="email" class="form-control" placeholder="john@company.com" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" placeholder="••••••••" required>
+      </div>
+
+      <div class="form-group">
+        <label class="flex gap-1 text-xs text-muted" style="align-items:start; cursor:pointer;">
+          <input type="checkbox" required style="margin-top:2px;"> I agree to the Terms of Service & Privacy Policy
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Create Account</button>
+    </form>
+
+    <div class="auth-footer">
+      Already have an account? <a href="login.html">Sign In</a>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

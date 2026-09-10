@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal — LinguaGlobal Agency</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="dash-overlay" id="dashOverlay"></div>
+  <div class="dashboard-layout">
+    <!-- Sidebar (6 options + Logout) -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar-header">
+        <a href="index.html" class="logo dash-logo">
+          <div class="logo-icon">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <span class="logo-text">Globa<span>Ze</span></span>
+        </a>
+      </div>
+
+      <nav class="dash-menu">
+        <a href="admin-dashboard.html" class="dash-item active">
+          <span class="dash-icon"><i class="fa-solid fa-bolt"></i></span> Admin Overview
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-users"></i></span> All Clients
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-language"></i></span> Linguist Pool
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-sack-dollar"></i></span> Agency Revenue
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-stamp"></i></span> Certified Audits
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-sliders"></i></span> System Config
+        </a>
+      </nav>
+
+      <div class="dash-logout">
+        <a href="login.html" class="dash-item text-warning">
+          <span class="dash-icon"><i class="fa-solid fa-right-from-bracket"></i></span> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dash-main">
+      <!-- Topbar with Admin Profile & Toggles -->
+      <div class="dash-topbar">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <button class="dash-menu-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div>
+            <h2>Admin Command Center</h2>
+            <p class="text-sm text-muted">Manage agency operations, revenue metrics, and linguist assignments.</p>
+          </div>
+        </div>
+
+        <div class="dash-actions">
+          <div class="dash-toggles">
+            <button class="theme-toggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+            <button class="rtl-toggle" aria-label="Toggle RTL">RTL</button>
+          </div>
+
+          <div class="user-profile">
+            <img
+              src="https://api.dicebear.com/8.x/initials/svg?seed=Admin%20Director&backgroundColor=06B6D4&textColor=ffffff"
+              alt="Admin Director"
+              class="user-avatar"
+            />
+            <div class="user-info">
+              <span class="user-name">Admin Director</span>
+              <span class="user-role">Super Manager</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Stats Cards -->
+      <div class="grid-4 mb-4">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-briefcase"></i></div>
+          <div class="stat-info">
+            <h3>$42,000</h3>
+            <p class="text-muted">Monthly Revenue</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(6,182,212,0.15); color:var(--accent);"><i class="fa-solid fa-building"></i></div>
+          <div class="stat-info">
+            <h3>1,420</h3>
+            <p class="text-muted">Active Corporate Clients</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(16,185,129,0.15); color:var(--success);"><i class="fa-solid fa-comments"></i></div>
+          <div class="stat-info">
+            <h3>5,200</h3>
+            <p class="text-muted">Vetted Linguists</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(245,158,11,0.15); color:var(--warning);"><i class="fa-solid fa-bolt"></i></div>
+          <div class="stat-info">
+            <h3>99.8%</h3>
+            <p class="text-muted">SLA Compliance</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Revenue Line Chart -->
+      <div class="card mb-4">
+        <div class="chart-header">
+          <h4>Monthly Agency Growth ($ USD)</h4>
+          <span class="badge badge-success">+ 18% vs Last Month</span>
+        </div>
+        <canvas id="revenueChart" height="100"></canvas>
+      </div>
+
+      <!-- Recent Orders Table -->
+      <div class="card">
+        <div class="flex-between mb-3">
+          <h4>Global Order Pipeline</h4>
+          <button class="btn btn-primary btn-sm"><i class="fa-solid fa-plus me-1"></i> Assign Linguist</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Client Name</th>
+                <th>Source & Target</th>
+                <th>Assigned Linguist</th>
+                <th>Value ($)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#ORD-991</td>
+                <td>TechCorp Global</td>
+                <td>EN → ES, FR, DE</td>
+                <td>Maria Santos</td>
+                <td>$3,400</td>
+                <td><span class="badge badge-success">Active</span></td>
+              </tr>
+              <tr>
+                <td>#ORD-992</td>
+                <td>LegalGlobal Partners</td>
+                <td>AR → EN</td>
+                <td>Tariq Mansoor</td>
+                <td>$1,250</td>
+                <td><span class="badge badge-warning">Certified Audit</span></td>
+              </tr>
+              <tr>
+                <td>#ORD-993</td>
+                <td>BioHealth International</td>
+                <td>EN → ZH</td>
+                <td>Li Wei</td>
+                <td>$5,100</td>
+                <td><span class="badge badge-accent">Proofreading</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script>
+    // Sidebar mobile toggle
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.dash-sidebar');
+    const overlay = document.getElementById('dashOverlay');
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('visible');
+    }
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('visible');
+    });
+    overlay.addEventListener('click', closeSidebar);
+  </script>
+</body>
+</html>

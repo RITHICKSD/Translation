@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — LinguaGlobal Agency</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-globe"></i></div>
+        <span class="logo-text">Globa<span>Ze</span></span>
+      </a>
+
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">
+            Home
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="dropdown">
+            <a href="index.html" class="dropdown-link"><span class="d-icon"><i class="fa-solid fa-house"></i></span> Home 1 (Global)</a>
+            <a href="home2.html" class="dropdown-link"><span class="d-icon"><i class="fa-solid fa-bolt"></i></span> Home 2 (Enterprise)</a>
+          </div>
+        </div>
+
+        <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+        <div class="nav-item"><a href="services.html" class="nav-link">Services</a></div>
+        <div class="nav-item"><a href="certified.html" class="nav-link">Certified</a></div>
+        <div class="nav-item"><a href="industries.html" class="nav-link">Industries</a></div>
+        <div class="nav-item"><a href="contact.html" class="nav-link active">Contact Us</a></div>
+
+        <div class="nav-item">
+          <a href="#" class="nav-link">
+            Dashboard
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="dropdown">
+            <a href="dashboard.html" class="dropdown-link"><span class="d-icon"><i class="fa-solid fa-user"></i></span> Client Dashboard</a>
+            <a href="admin-dashboard.html" class="dropdown-link"><span class="d-icon"><i class="fa-solid fa-user-shield"></i></span> Admin Dashboard</a>
+          </div>
+        </div>
+
+        <!-- Mobile-only: toggles + login inside hamburger menu -->
+        <div class="nav-actions">
+          <div class="nav-actions-toggles">
+            <button class="theme-toggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+            <button class="rtl-toggle" aria-label="Toggle RTL">RTL</button>
+          </div>
+          <a href="login.html" class="btn btn-primary" style="justify-content:center;">Client Login</a>
+        </div>
+      </nav>
+
+      <div class="header-right">
+        <button class="theme-toggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+        <button class="rtl-toggle" aria-label="Toggle RTL">RTL</button>
+        <a href="login.html" class="btn-login">Client Login</a>
+        <button class="hamburger" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 1: Hero -->
+  <section class="section section-lg hero-section text-center" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29udGFjdCUyMHVzfGVufDB8fDB8fHww');">
+    <div class="container container-sm" data-aos="fade-up">
+      <span class="badge badge-accent mb-3"><i class="fa-solid fa-headset"></i> 24/7 Global Support</span>
+      <h1>Get in Touch With Our Linguists</h1>
+      <p class="mt-2">We have project managers standing by around the clock across all timezones.</p>
+    </div>
+  </section>
+
+  <!-- Section 2: Contact Form -->
+  <section class="section">
+    <div class="container grid-2" style="align-items:start;">
+      <div class="card card-glass p-4" data-aos="fade-right">
+        <h3>Send Us a Message</h3>
+        <form class="mt-3" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-control" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" placeholder="jane@company.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-control" placeholder="Project Inquiry / Quote Request">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" rows="4" placeholder="Describe your translation needs..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Inquiry</button>
+        </form>
+      </div>
+
+      <div data-aos="fade-left">
+        <div class="card mb-3">
+          <h4><i class="fa-solid fa-location-dot text-primary me-2"></i> Global Offices</h4>
+          <p class="text-sm mt-1">London: 125 Kingsway, Holborn, London WC2B 6NH</p>
+          <p class="text-sm">New York: 450 Lexington Ave, New York, NY 10017</p>
+        </div>
+        <div class="card mb-3">
+          <h4><i class="fa-solid fa-phone text-accent me-2"></i> Direct Phone Support</h4>
+          <p class="text-sm mt-1">UK/EU: +44 20 7946 0912</p>
+          <p class="text-sm">US/Toll-Free: +1 (800) 555-0199</p>
+        </div>
+        <div class="card">
+          <h4><i class="fa-solid fa-envelope text-success me-2"></i> Direct Email</h4>
+          <p class="text-sm mt-1">support@linguaglobal.com</p>
+          <p class="text-sm">certified@linguaglobal.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Redesigned Quick Hub with Interactive Leaflet Map -->
+  <section class="section" style="background: var(--bg-alt);">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label">Global Presence</span>
+        <h2 class="section-title">Quick Hub & Interactive World Map</h2>
+        <p class="section-subtitle">Explore our global offices and localization operational centers in real time.</p>
+      </div>
+
+      <!-- Leaflet Map Container -->
+      <div class="card p-2 mb-4" data-aos="fade-up" style="box-shadow: var(--shadow-xl); overflow: hidden;">
+        <div id="leaflet-map" style="width: 100%; height: 380px; border-radius: var(--radius-md); z-index: 1;"></div>
+      </div>
+
+      <div class="grid-4" data-aos="fade-up">
+        <div class="card p-0 overflow-hidden text-center" style="box-shadow: var(--shadow-md);">
+          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=400&q=80" alt="London Hub" style="width:100%; height:130px; object-fit:cover;">
+          <div class="p-3">
+            <strong>London HQ</strong>
+            <p class="text-xs text-muted">125 Kingsway, London WC2B 6NH</p>
+            <span class="badge badge-primary mt-2">+44 20 7946 0912</span>
+          </div>
+        </div>
+
+        <div class="card p-0 overflow-hidden text-center" style="box-shadow: var(--shadow-md);">
+          <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=400&q=80" alt="New York Hub" style="width:100%; height:130px; object-fit:cover;">
+          <div class="p-3">
+            <strong>New York Hub</strong>
+            <p class="text-xs text-muted">450 Lexington Ave, NY 10017</p>
+            <span class="badge badge-accent mt-2">+1 (800) 555-0199</span>
+          </div>
+        </div>
+
+        <div class="card p-0 overflow-hidden text-center" style="box-shadow: var(--shadow-md);">
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=400&q=80" alt="Dubai Hub" style="width:100%; height:130px; object-fit:cover;">
+          <div class="p-3">
+            <strong>Dubai Hub</strong>
+            <p class="text-xs text-muted">DIFC Gate Precinct 4, Dubai</p>
+            <span class="badge badge-success mt-2">+971 4 312 9000</span>
+          </div>
+        </div>
+
+        <div class="card p-0 overflow-hidden text-center" style="box-shadow: var(--shadow-md);">
+          <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80" alt="Tokyo Hub" style="width:100%; height:130px; object-fit:cover;">
+          <div class="p-3">
+            <strong>Tokyo Hub</strong>
+            <p class="text-xs text-muted">Roppongi Hills Tower, Tokyo</p>
+            <span class="badge badge-warning mt-2">+81 3 5555 0142</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Support Hours -->
+  <section class="section">
+    <div class="container text-center" data-aos="fade-up">
+      <span class="section-label">Availability</span>
+      <h2 class="section-title">24 / 7 / 365 Operations</h2>
+      <p class="section-subtitle">Our follow-the-sun model ensures your project is being processed regardless of time zone.</p>
+    </div>
+  </section>
+
+  <!-- Section 5: Mini FAQ -->
+  <section class="section" style="background: var(--bg-alt);">
+    <div class="container container-sm" data-aos="fade-up">
+      <div class="section-header">
+        <h2>Quick Help</h2>
+      </div>
+      <div class="card mb-2">
+        <h4>What is your average response time?</h4>
+        <p class="text-sm">We respond to email inquiries within 15 minutes during standard working hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Social Connect -->
+  <section class="section text-center">
+    <div class="container" data-aos="fade-up">
+      <span class="section-label">Follow Us</span>
+      <h2 class="section-title">Connect on Social Media</h2>
+      <div class="flex-center gap-3 mt-3">
+        <a href="#" class="btn btn-ghost"><i class="fa-brands fa-linkedin-in me-1"></i> LinkedIn</a>
+        <a href="#" class="btn btn-ghost"><i class="fa-brands fa-x-twitter me-1"></i> Twitter / X</a>
+        <a href="#" class="btn btn-ghost"><i class="fa-brands fa-instagram me-1"></i> Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Footer (Full Standard Home 1 Footer) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-globe"></i></div>
+            <span class="logo-text">Globa<span>Ze</span></span>
+          </a>
+          <p>Empowering global enterprises with high-precision human translations, software localization, and certified legal document processing.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Home</a>
+            <a href="about.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> About Us</a>
+            <a href="services.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Services</a>
+            <a href="certified.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Certified</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">More Pages</h4>
+          <div class="footer-links">
+            <a href="industries.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Industries</a>
+            <a href="contact.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Contact Us</a>
+            <a href="dashboard.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Client Dashboard</a>
+            <a href="admin-dashboard.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Admin Portal</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Legal & Support</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link"><i class="fa-solid fa-angle-right"></i> Privacy Policy</a>
+            <a href="#" class="footer-link"><i class="fa-solid fa-angle-right"></i> Terms of Service</a>
+            <a href="#" class="footer-link"><i class="fa-solid fa-angle-right"></i> ISO Certification</a>
+            <a href="login.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Portal Login</a>
+          </div>
+        </div>
+
+        <div class="footer-newsletter">
+          <h4 class="footer-title">Stay Updated</h4>
+          <p>Subscribe for localization tips and language market reports.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" class="form-control" placeholder="Your email address" required>
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="languages-bar">
+        <span class="lang-chip">English</span>
+        <span class="lang-chip">Español</span>
+        <span class="lang-chip">العربية</span>
+        <span class="lang-chip">Français</span>
+        <span class="lang-chip">中文</span>
+        <span class="lang-chip">Deutsch</span>
+        <span class="lang-chip">日本語</span>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 LinguaGlobal Agency. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <!-- Leaflet Map JS Script -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const map = L.map('leaflet-map').setView([25, 10], 2);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; OpenStreetMap'
+      }).addTo(map);
+
+      const locations = [
+        { name: 'London HQ (UK)', lat: 51.5074, lng: -0.1278 },
+        { name: 'New York Hub (USA)', lat: 40.7128, lng: -74.0060 },
+        { name: 'Dubai Hub (UAE)', lat: 25.2048, lng: 55.2708 },
+        { name: 'Tokyo Hub (Japan)', lat: 35.6762, lng: 139.6503 }
+      ];
+
+      locations.forEach(loc => {
+        L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(`<b>${loc.name}</b><br>LinguaGlobal Operational Center`);
+      });
+    });
+  </script>
+</body>
+</html>

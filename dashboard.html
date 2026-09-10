@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard — LinguaGlobal Portal</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="dash-overlay" id="dashOverlay"></div>
+  <div class="dashboard-layout">
+    <!-- Sidebar (6 options + Logout) -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar-header">
+        <a href="index.html" class="logo dash-logo">
+          <div class="logo-icon">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <span class="logo-text">Globa<span>Ze</span></span>
+        </a>
+      </div>
+
+      <nav class="dash-menu">
+        <a href="dashboard.html" class="dash-item active">
+          <span class="dash-icon"><i class="fa-solid fa-chart-pie"></i></span> Overview & Stats
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-folder-open"></i></span> My Projects
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-file-arrow-up"></i></span> Upload Document
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-certificate"></i></span> Certified Requests
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-file-invoice-dollar"></i></span> Invoices & Billing
+        </a>
+        <a href="#" class="dash-item">
+          <span class="dash-icon"><i class="fa-solid fa-gear"></i></span> Account Settings
+        </a>
+      </nav>
+
+      <div class="dash-logout">
+        <a href="login.html" class="dash-item text-warning">
+          <span class="dash-icon"><i class="fa-solid fa-right-from-bracket"></i></span> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dash-main">
+      <!-- Topbar with Profile & Toggles -->
+      <div class="dash-topbar">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <button class="dash-menu-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div>
+            <h2>Client Portal</h2>
+            <p class="text-sm text-muted">Track translations, review delivered files, and view invoices.</p>
+          </div>
+        </div>
+
+        <div class="dash-actions">
+          <button class="theme-toggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+          <button class="rtl-toggle" aria-label="Toggle RTL">RTL</button>
+
+          <div class="user-profile">
+            <img
+              src="https://api.dicebear.com/8.x/initials/svg?seed=John%20Smith&backgroundColor=0F172A&textColor=ffffff"
+              alt="John Smith"
+              class="user-avatar"
+            />
+            <div class="user-info">
+              <span class="user-name">John Smith</span>
+              <span class="user-role">Enterprise Client</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid-4 mb-4">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-file-lines"></i></div>
+          <div class="stat-info">
+            <h3>24</h3>
+            <p class="text-muted">Total Projects</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(16,185,129,0.15); color:var(--success);"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="stat-info">
+            <h3>4</h3>
+            <p class="text-muted">In Progress</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(6,182,212,0.15); color:var(--accent);"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-info">
+            <h3>18</h3>
+            <p class="text-muted">Completed</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(245,158,11,0.15); color:var(--warning);"><i class="fa-solid fa-stamp"></i></div>
+          <div class="stat-info">
+            <h3>2</h3>
+            <p class="text-muted">Certified Pending</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Document Bar -->
+      <div class="card card-glass mb-4 flex-between p-3" style="align-items:center;">
+        <div>
+          <h4>Need a new document translated?</h4>
+          <p class="text-xs text-muted">Upload PDF, DOCX, or ZIP for instant price estimation.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="alert('Upload file dialog opened');"><i class="fa-solid fa-upload me-1"></i> Drag & Drop Upload</button>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4>Projects by Language Pair</h4>
+          </div>
+          <canvas id="langPairsChart" height="200"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4>Project Status Breakdown</h4>
+          </div>
+          <canvas id="projectStatusChart" height="200"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Projects Table -->
+      <div class="card mt-4">
+        <div class="flex-between mb-3">
+          <h4>Recent Translation Requests</h4>
+          <button class="btn btn-ghost btn-sm">View All</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Project ID</th>
+                <th>Document Name</th>
+                <th>Language Pair</th>
+                <th>Status</th>
+                <th>Delivery Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#PRJ-8821</td>
+                <td>Software_User_Manual.pdf</td>
+                <td>EN → ES</td>
+                <td><span class="badge badge-success">Completed</span></td>
+                <td>Sep 08, 2026</td>
+                <td><button class="btn btn-ghost btn-sm" onclick="alert('Downloading translated file...');"><i class="fa-solid fa-download me-1"></i> Download</button></td>
+              </tr>
+              <tr>
+                <td>#PRJ-8824</td>
+                <td>Legal_Affidavit_USCIS.pdf</td>
+                <td>AR → EN</td>
+                <td><span class="badge badge-warning">In Progress</span></td>
+                <td>Sep 12, 2026</td>
+                <td><button class="btn btn-ghost btn-sm">Track</button></td>
+              </tr>
+              <tr>
+                <td>#PRJ-8830</td>
+                <td>Medical_Device_Manual.docx</td>
+                <td>EN → DE</td>
+                <td><span class="badge badge-accent">Under Review</span></td>
+                <td>Sep 14, 2026</td>
+                <td><button class="btn btn-ghost btn-sm">View SLA</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script>
+    // Sidebar mobile toggle
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.dash-sidebar');
+    const overlay = document.getElementById('dashOverlay');
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('visible');
+    }
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('visible');
+    });
+    overlay.addEventListener('click', closeSidebar);
+  </script>
+</body>
+</html>
