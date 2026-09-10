@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: { position: 'bottom' }
         },
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: { y: { beginAtZero: true } }
       }
@@ -66,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: { legend: { display: false } }
       }
     });

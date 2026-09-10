@@ -55,18 +55,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile dropdown toggle
+  // Mobile dropdown toggle — always attach; check viewport on each click
   const navItems = document.querySelectorAll('.nav-item');
   navItems.forEach(item => {
     const link = item.querySelector('.nav-link');
     const dropdown = item.querySelector('.dropdown');
-    if (dropdown && link && window.innerWidth <= 1024) {
+    if (dropdown && link) {
       link.addEventListener('click', (e) => {
-        if (item.querySelector('.dropdown')) {
+        if (window.innerWidth <= 1024) {
           e.preventDefault();
-          item.classList.toggle('mobile-open');
+          const isOpen = item.classList.contains('mobile-open');
+          // Close all other open dropdowns first
+          navItems.forEach(other => {
+            if (other !== item) other.classList.remove('mobile-open');
+          });
+          item.classList.toggle('mobile-open', !isOpen);
         }
       });
+    }
+  });
+
+  // Close mobile nav and dropdowns when clicking a non-dropdown link
+  document.querySelectorAll('.nav-link:not([href="#"])').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        const parentItem = link.closest('.nav-item');
+        if (!parentItem || !parentItem.querySelector('.dropdown')) {
+          if (nav) nav.classList.remove('open');
+          if (hamburger) hamburger.classList.remove('open');
+        }
+      }
+    });
+  });
+
+  // Reset mobile-open states when resizing back to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+      navItems.forEach(item => item.classList.remove('mobile-open'));
+      if (nav) nav.classList.remove('open');
+      if (hamburger) hamburger.classList.remove('open');
     }
   });
 

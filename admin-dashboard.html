@@ -57,23 +57,41 @@
     <main class="dash-main">
       <!-- Topbar with Admin Profile & Toggles -->
       <div class="dash-topbar">
-        <div style="display:flex; align-items:center; gap:0.75rem;">
-          <button class="dash-menu-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <div>
-            <h2>Admin Command Center</h2>
-            <p class="text-sm text-muted">Manage agency operations, revenue metrics, and linguist assignments.</p>
+        <!-- Row 1: hamburger + title + actions -->
+        <div class="dash-topbar-row">
+          <div class="dash-topbar-left">
+            <button class="dash-menu-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div>
+              <h2>Admin Command Center</h2>
+              <p class="text-sm text-muted">Manage agency operations, revenue metrics, and linguist assignments.</p>
+            </div>
+          </div>
+
+          <div class="dash-actions">
+            <div class="dash-toggles">
+              <button class="theme-toggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+              <button class="rtl-toggle" aria-label="Toggle RTL">RTL</button>
+            </div>
+            <!-- Profile: visible on desktop inside actions -->
+            <div class="user-profile user-profile--desktop">
+              <img
+                src="https://api.dicebear.com/8.x/initials/svg?seed=Admin%20Director&backgroundColor=06B6D4&textColor=ffffff"
+                alt="Admin Director"
+                class="user-avatar"
+              />
+              <div class="user-info">
+                <span class="user-name">Admin Director</span>
+                <span class="user-role">Super Manager</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="dash-actions">
-          <div class="dash-toggles">
-            <button class="theme-toggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
-            <button class="rtl-toggle" aria-label="Toggle RTL">RTL</button>
-          </div>
-
-          <div class="user-profile">
+        <!-- Row 2: profile card — visible only on mobile -->
+        <div class="dash-topbar-profile">
+          <div class="user-profile user-profile--mobile">
             <img
               src="https://api.dicebear.com/8.x/initials/svg?seed=Admin%20Director&backgroundColor=06B6D4&textColor=ffffff"
               alt="Admin Director"
@@ -128,7 +146,9 @@
           <h4>Monthly Agency Growth ($ USD)</h4>
           <span class="badge badge-success">+ 18% vs Last Month</span>
         </div>
-        <canvas id="revenueChart" height="100"></canvas>
+        <div class="chart-canvas-wrap chart-canvas-wrap--tall">
+          <canvas id="revenueChart"></canvas>
+        </div>
       </div>
 
       <!-- Recent Orders Table -->
