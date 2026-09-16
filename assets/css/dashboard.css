@@ -55,6 +55,16 @@
   background: var(--primary-glow);
 }
 
+[data-theme="dark"] .dash-item {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .dash-item:hover,
+[data-theme="dark"] .dash-item.active {
+  color: var(--primary);
+  background: rgba(255,255,255,0.1);
+}
+
 .dash-item .dash-icon {
   font-size: 1.1rem;
   width: 22px;
@@ -106,7 +116,9 @@
   color: #EF4444;
   font-weight: 900;
 }
-[data-theme="dark"] .dash-logo .logo-text,
+[data-theme="dark"] .dash-logo .logo-text {
+  color: #F1F5F9;
+}
 [data-theme="dark"] .dash-logo .logo-text span {
   color: #EF4444;
 }
@@ -128,6 +140,14 @@
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .dash-topbar h2 {
+  color: var(--text);
+}
+
+[data-theme="dark"] .dash-topbar p {
+  color: var(--text-muted);
 }
 
 /* Row 1: title + actions side by side */
@@ -161,6 +181,11 @@
   border: 1px solid var(--border);
 }
 
+[data-theme="dark"] .user-profile {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
 .user-avatar {
   width: 36px;
   height: 36px;
@@ -169,6 +194,12 @@
   border: 2px solid var(--border);
   background: var(--primary-glow);
   flex-shrink: 0;
+}
+
+[data-theme="dark"] .user-avatar {
+  border: 2px solid #FFFFFF;
+  background: #000000;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.2);
 }
 
 .user-info {
@@ -180,6 +211,7 @@
   font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.2;
+  color: var(--text);
 }
 
 .user-role {
@@ -187,10 +219,24 @@
   color: var(--text-muted);
 }
 
+[data-theme="dark"] .user-name {
+  color: var(--text);
+}
+
+[data-theme="dark"] .user-role {
+  color: var(--text-muted);
+}
+
 .dash-actions {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.dash-toggles {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* ── Separate toggle buttons ── */
@@ -218,6 +264,20 @@
   color: var(--primary);
 }
 
+[data-theme="dark"] .theme-toggle,
+[data-theme="dark"] .rtl-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+[data-theme="dark"] .theme-toggle:hover,
+[data-theme="dark"] .rtl-toggle:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
 /* ── Dashboard Stats ── */
 .stat-card {
   display: flex;
@@ -227,6 +287,11 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
+}
+
+[data-theme="dark"] .stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
 }
 
 .stat-icon {
@@ -241,15 +306,22 @@
   font-size: 1.5rem;
 }
 
+[data-theme="dark"] .stat-icon {
+  background: rgba(255,255,255,0.1);
+  color: var(--primary);
+}
+
 .stat-info h3 {
   font-size: 1.75rem;
   font-weight: 800;
   line-height: 1.1;
+  color: var(--text);
 }
 
 .stat-info p {
   font-size: 0.85rem;
   margin-top: 0.2rem;
+  color: var(--text-muted);
 }
 
 /* ── Charts Grid ── */
@@ -267,11 +339,20 @@
   padding: 1.5rem;
 }
 
+[data-theme="dark"] .chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
 .chart-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.25rem;
+}
+
+[data-theme="dark"] .chart-header h4 {
+  color: var(--text);
 }
 
 /* Canvas wrapper — gives Chart.js a bounded box to render into */
@@ -463,4 +544,43 @@
 }
 .dash-main .flex-between > * {
   min-width: 0;
+}
+
+/* ============================================================
+   DARK MODE ENHANCEMENTS — Dashboard
+   ============================================================ */
+
+[data-theme="dark"] .dash-sidebar {
+  background: var(--bg-card);
+  border-inline-end: 1px solid var(--border);
+}
+
+[data-theme="dark"] .dash-main {
+  background: var(--bg);
+}
+
+[data-theme="dark"] .dash-menu-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+[data-theme="dark"] .card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .card h4,
+[data-theme="dark"] .card p,
+[data-theme="dark"] .card strong {
+  color: var(--text);
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .text-sm {
+  color: var(--text-muted);
 }

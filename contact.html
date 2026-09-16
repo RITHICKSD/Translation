@@ -29,8 +29,8 @@
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </a>
           <div class="dropdown">
-            <a href="index.html" class="dropdown-link"><span class="d-icon"><i class="fa-solid fa-house"></i></span> Home 1 (Global)</a>
-            <a href="home2.html" class="dropdown-link"><span class="d-icon"><i class="fa-solid fa-bolt"></i></span> Home 2 (Enterprise)</a>
+            <a href="index.html" class="dropdown-link">Home 1</a>
+            <a href="home2.html" class="dropdown-link">Home 2</a>
           </div>
         </div>
 
@@ -46,8 +46,8 @@
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </a>
           <div class="dropdown">
-            <a href="dashboard.html" class="dropdown-link"><span class="d-icon"><i class="fa-solid fa-user"></i></span> Client Dashboard</a>
-            <a href="admin-dashboard.html" class="dropdown-link"><span class="d-icon"><i class="fa-solid fa-user-shield"></i></span> Admin Dashboard</a>
+            <a href="dashboard.html" class="dropdown-link">Client Dashboard</a>
+            <a href="admin-dashboard.html" class="dropdown-link">Admin Dashboard</a>
           </div>
         </div>
 
@@ -194,11 +194,53 @@
   <section class="section" style="background: var(--bg-alt);">
     <div class="container container-sm" data-aos="fade-up">
       <div class="section-header">
-        <h2>Quick Help</h2>
+        <span class="section-label">Support FAQ</span>
+        <h2 class="section-title">Quick Help</h2>
+        <p class="section-subtitle">Quick answers to the most common contact and support questions.</p>
       </div>
       <div class="card mb-2">
-        <h4>What is your average response time?</h4>
-        <p class="text-sm">We respond to email inquiries within 15 minutes during standard working hours.</p>
+        <div class="flex gap-3" style="align-items: flex-start;">
+          <div style="min-width: 2.2rem; height: 2.2rem; display:flex; align-items:center; justify-content:center; background: var(--primary-glow); border-radius: var(--radius-sm); margin-top: 0.1rem;">
+            <i class="fa-solid fa-clock text-primary"></i>
+          </div>
+          <div>
+            <h4>What is your average response time?</h4>
+            <p class="text-sm mt-1">We respond to email inquiries within 15 minutes during standard working hours. For urgent matters, call our direct lines for an immediate response from a project manager.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-2">
+        <div class="flex gap-3" style="align-items: flex-start;">
+          <div style="min-width: 2.2rem; height: 2.2rem; display:flex; align-items:center; justify-content:center; background: rgba(245,158,11,0.1); border-radius: var(--radius-sm); margin-top: 0.1rem;">
+            <i class="fa-solid fa-globe text-accent"></i>
+          </div>
+          <div>
+            <h4>Do you support multiple languages in one project?</h4>
+            <p class="text-sm mt-1">Yes. We handle multi-language projects simultaneously. Just specify all your target languages when submitting your inquiry and we will assign specialist linguists for each language pair.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-2">
+        <div class="flex gap-3" style="align-items: flex-start;">
+          <div style="min-width: 2.2rem; height: 2.2rem; display:flex; align-items:center; justify-content:center; background: rgba(16,185,129,0.1); border-radius: var(--radius-sm); margin-top: 0.1rem;">
+            <i class="fa-solid fa-file-invoice text-success"></i>
+          </div>
+          <div>
+            <h4>How do I request a quote for a large project?</h4>
+            <p class="text-sm mt-1">Fill in the contact form above with your document type, word count estimate, and language pair. Our project managers will send a detailed quote within 1 business hour, including turnaround time and pricing breakdown.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="flex gap-3" style="align-items: flex-start;">
+          <div style="min-width: 2.2rem; height: 2.2rem; display:flex; align-items:center; justify-content:center; background: rgba(251,191,36,0.1); border-radius: var(--radius-sm); margin-top: 0.1rem;">
+            <i class="fa-solid fa-lock text-warning"></i>
+          </div>
+          <div>
+            <h4>Is my document secure when I contact you?</h4>
+            <p class="text-sm mt-1">All files and messages submitted through our contact form are transmitted over 256-bit TLS encryption. We sign NDAs by default on request and our team operates under strict confidentiality agreements.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -300,21 +342,29 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const map = L.map('leaflet-map').setView([25, 10], 2);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '&copy; OpenStreetMap'
+      const mapEl = document.getElementById('leaflet-map');
+      if (!mapEl) return;
+
+      const map = L.map('leaflet-map', { scrollWheelZoom: false }).setView([25, 10], 2);
+
+      // CartoDB Positron tiles — no API key required, no referrer blocking
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd'
       }).addTo(map);
 
       const locations = [
-        { name: 'London HQ (UK)', lat: 51.5074, lng: -0.1278 },
-        { name: 'New York Hub (USA)', lat: 40.7128, lng: -74.0060 },
-        { name: 'Dubai Hub (UAE)', lat: 25.2048, lng: 55.2708 },
-        { name: 'Tokyo Hub (Japan)', lat: 35.6762, lng: 139.6503 }
+        { name: 'London HQ (UK)',        lat: 51.5074,  lng: -0.1278  },
+        { name: 'New York Hub (USA)',     lat: 40.7128,  lng: -74.0060 },
+        { name: 'Dubai Hub (UAE)',        lat: 25.2048,  lng: 55.2708  },
+        { name: 'Tokyo Hub (Japan)',      lat: 35.6762,  lng: 139.6503 }
       ];
 
       locations.forEach(loc => {
-        L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(`<b>${loc.name}</b><br>LinguaGlobal Operational Center`);
+        L.marker([loc.lat, loc.lng])
+          .addTo(map)
+          .bindPopup(`<b>${loc.name}</b><br>LinguaGlobal Operational Center`);
       });
     });
   </script>

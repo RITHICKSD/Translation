@@ -64,8 +64,8 @@
   --bg-card:      #1E293B;
   --bg-glass:     rgba(30,41,59,0.85);
   --text:         #F1F5F9;
-  --text-muted:   #94A3B8;
-  --text-subtle:  #64748B;
+  --text-muted:   #CBD5E1;
+  --text-subtle:  #94A3B8;
   --border:       #334155;
   --border-light: #1E293B;
   --shadow-sm:    0 1px 3px rgba(0,0,0,0.3);
@@ -110,6 +110,19 @@ h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
 h4 { font-size: 1.2rem; }
 h5 { font-size: 1rem; }
 p  { color: var(--text-muted); line-height: 1.75; }
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text);
+}
+
+[data-theme="dark"] p {
+  color: var(--text-muted);
+}
 
 /* ── Fixed Hero Section Style (Immune to Light/Dark Mode) ── */
 .hero-section {
@@ -221,20 +234,16 @@ p  { color: var(--text-muted); line-height: 1.75; }
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #0F172A;
-  background: rgba(15, 23, 42, 0.06);
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: var(--primary);
+  background: var(--primary-glow);
+  border: 1px solid var(--border);
   padding: 0.35rem 1rem;
   border-radius: var(--radius-full);
   margin-bottom: 1rem;
   transition: var(--transition);
 }
 
-[data-theme="dark"] .section-label {
-  color: #FFFFFF !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: rgba(255, 255, 255, 0.22) !important;
-}
+/* Dark mode section-label is now handled by CSS variables */
 .section-title {
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   font-weight: 800;
@@ -285,6 +294,14 @@ p  { color: var(--text-muted); line-height: 1.75; }
   box-shadow: 0 8px 30px var(--primary-glow);
 }
 
+[data-theme="dark"] .btn-primary {
+  background: linear-gradient(135deg, #1E293B, #0891B2);
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .btn-primary:hover {
+  background: linear-gradient(135deg, #334155, #06B6D4);
+}
+
 .btn-outline {
   background: transparent;
   color: var(--primary);
@@ -294,6 +311,15 @@ p  { color: var(--text-muted); line-height: 1.75; }
   background: var(--primary);
   color: #fff !important;
   transform: translateY(-2px);
+}
+
+[data-theme="dark"] .btn-outline {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+[data-theme="dark"] .btn-outline:hover {
+  background: var(--primary);
+  color: #0F172A !important;
 }
 
 .btn-ghost {
@@ -316,10 +342,35 @@ p  { color: var(--text-muted); line-height: 1.75; }
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
+[data-theme="dark"] .btn-white {
+  background: var(--bg-alt);
+  color: var(--primary) !important;
+}
+[data-theme="dark"] .btn-white:hover {
+  background: var(--bg-card);
+}
 
 .btn-sm { padding: 0.5rem 1.2rem; font-size: 0.875rem; }
 .btn-lg { padding: 1rem 2.5rem; font-size: 1.05rem; }
 .btn-icon { width: 2.5rem; height: 2.5rem; padding: 0; justify-content: center; border-radius: var(--radius-md); }
+
+/* Ensure all buttons have visible text in dark mode */
+[data-theme="dark"] .btn {
+  color: var(--text);
+}
+[data-theme="dark"] .btn-primary {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .btn-ghost {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}
+[data-theme="dark"] .btn-ghost:hover {
+  background: var(--bg-alt);
+  border-color: var(--primary);
+  color: var(--primary);
+}
 
 /* ── Cards ── */
 .card {
@@ -336,12 +387,26 @@ p  { color: var(--text-muted); line-height: 1.75; }
   border-color: var(--primary-light);
 }
 
+[data-theme="dark"] .card {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .card:hover {
+  border-color: var(--primary);
+}
+
 .card-glass {
   background: var(--bg-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: var(--radius-lg);
+}
+
+[data-theme="dark"] .card-glass {
+  background: var(--bg-glass);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* ── Badge ── */
@@ -359,6 +424,12 @@ p  { color: var(--text-muted); line-height: 1.75; }
 .badge-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
 .badge-danger  { background: rgba(239,68,68,0.15);  color: var(--danger); }
 .badge-accent  { background: rgba(6,182,212,0.15);  color: var(--accent); }
+
+[data-theme="dark"] .badge-primary { background: rgba(255,255,255,0.15); color: var(--primary); }
+[data-theme="dark"] .badge-success { background: rgba(16,185,129,0.2); color: #34D399; }
+[data-theme="dark"] .badge-warning { background: rgba(245,158,11,0.2); color: #FCD34D; }
+[data-theme="dark"] .badge-danger  { background: rgba(239,68,68,0.2);  color: #FCA5A5; }
+[data-theme="dark"] .badge-accent  { background: rgba(6,182,212,0.2);  color: #22D3EE; }
 
 /* ── Forms ── */
 .form-group { margin-bottom: 1.5rem; }
@@ -385,6 +456,12 @@ p  { color: var(--text-muted); line-height: 1.75; }
   box-shadow: 0 0 0 3px var(--primary-glow);
 }
 .form-control::placeholder { color: var(--text-subtle); }
+
+[data-theme="dark"] .form-control {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text);
+}
 
 /* ── Grid helpers ── */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
@@ -444,6 +521,14 @@ p  { color: var(--text-muted); line-height: 1.75; }
 .icon-box-success { background: rgba(16,185,129,0.15); color: var(--success); }
 .icon-box-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
 .icon-box-lg { width: 4.5rem; height: 4.5rem; font-size: 1.8rem; border-radius: var(--radius-lg); }
+
+[data-theme="dark"] .icon-box {
+  background: rgba(255,255,255,0.1);
+  color: var(--primary);
+}
+[data-theme="dark"] .icon-box-accent { background: rgba(6,182,212,0.2); color: #22D3EE; }
+[data-theme="dark"] .icon-box-success { background: rgba(16,185,129,0.2); color: #34D399; }
+[data-theme="dark"] .icon-box-warning { background: rgba(245,158,11,0.2); color: #FCD34D; }
 
 /* ── Gradient Text ── */
 .gradient-text {
@@ -512,6 +597,17 @@ td {
 }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: var(--bg-alt); }
+
+[data-theme="dark"] th {
+  background: var(--bg-card);
+  color: var(--text-muted);
+}
+[data-theme="dark"] td {
+  color: var(--text);
+}
+[data-theme="dark"] tr:hover td {
+  background: rgba(255,255,255,0.05);
+}
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
@@ -699,4 +795,87 @@ tr:hover td { background: var(--bg-alt); }
 }
 [data-theme="dark"] .stat-value {
   color: #818CF8;
+}
+
+/* ============================================================
+   DARK MODE COMPREHENSIVE FIXES
+   ============================================================ */
+
+[data-theme="dark"] strong {
+  color: var(--text);
+}
+
+[data-theme="dark"] .card p {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .card h4 {
+  color: var(--text);
+}
+
+[data-theme="dark"] .text-center h1,
+[data-theme="dark"] .text-center h2,
+[data-theme="dark"] .text-center h3,
+[data-theme="dark"] .text-center h4 {
+  color: var(--text);
+}
+
+[data-theme="dark"] .section-title {
+  color: var(--text);
+}
+
+[data-theme="dark"] .section-subtitle {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .divider-text {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] a {
+  color: var(--text);
+}
+
+[data-theme="dark"] a:hover {
+  color: var(--primary);
+}
+
+/* Ensure stat values are visible in dark mode */
+[data-theme="dark"] .stat-num {
+  color: var(--text);
+}
+
+/* Ensure all text in cards is readable */
+[data-theme="dark"] .card * {
+  border-color: var(--border);
+}
+
+/* Fix social auth buttons */
+[data-theme="dark"] .btn-social {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .btn-social:hover {
+  background: var(--bg-alt);
+  border-color: var(--primary);
+}
+
+/* Timeline dark mode fixes */
+[data-theme="dark"] .timeline::before {
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+}
+
+[data-theme="dark"] .timeline .card {
+  background: var(--bg-card);
+}
+
+[data-theme="dark"] .timeline .card h4 {
+  color: var(--text);
+}
+
+[data-theme="dark"] .timeline .card p {
+  color: var(--text-muted);
 }

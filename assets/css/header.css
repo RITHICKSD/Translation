@@ -90,10 +90,6 @@
 .nav-link:hover {
   color: #0F172A;
   background: transparent;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
-  text-decoration-color: #0F172A;
 }
 .nav-link.active {
   color: #0F172A;
@@ -154,22 +150,11 @@
   text-decoration: none;
 }
 .dropdown-link:hover {
-  background: rgba(15,23,42,0.06);
+  background: transparent;
   color: #0F172A;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: #0F172A;
 }
 .dropdown-link .d-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: var(--primary-glow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  flex-shrink: 0;
+  display: none;
 }
 .dropdown-divider {
   height: 1px;
@@ -385,10 +370,6 @@ body { padding-top: 72px; }
 [data-theme="dark"] .site-header .nav-link:hover {
   color: #0F172A !important;
   background: transparent !important;
-  text-decoration: underline !important;
-  text-underline-offset: 4px !important;
-  text-decoration-thickness: 2px !important;
-  text-decoration-color: #0F172A !important;
 }
 
 [data-theme="dark"] .site-header .nav-link.active {
@@ -412,11 +393,8 @@ body { padding-top: 72px; }
 }
 
 [data-theme="dark"] .site-header .dropdown-link:hover {
-  background: rgba(15,23,42,0.06) !important;
+  background: transparent !important;
   color: #0F172A !important;
-  text-decoration: underline !important;
-  text-underline-offset: 3px !important;
-  text-decoration-color: #0F172A !important;
 }
 
 [data-theme="dark"] .site-header .dropdown-link .d-icon {
@@ -444,6 +422,17 @@ body { padding-top: 72px; }
 
 [data-theme="dark"] .site-header .hamburger span {
   background: #0F172A !important;
+}
+
+[data-theme="dark"] .site-header .btn-login {
+  background: #0F172A !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(15,23,42,0.25) !important;
+}
+
+[data-theme="dark"] .site-header .btn-login:hover {
+  background: #1E293B !important;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.35) !important;
 }
 
 @media (max-width: 1024px) {
