@@ -103,7 +103,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 input, textarea, select { font-family: inherit; }
 
 /* ── Typography ── */
-h1,h2,h3,h4,h5,h6 { font-family: var(--font-head); font-weight: 800; line-height: 1.2; color: var(--text); }
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-head); font-weight: 600; line-height: 1.2; color: var(--text); }
 h1 { font-size: clamp(2.3rem, 5vw, 4rem); letter-spacing: -0.03em; }
 h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: -0.02em; }
 h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
