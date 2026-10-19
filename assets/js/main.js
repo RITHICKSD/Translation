@@ -61,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const link = item.querySelector('.nav-link');
     const dropdown = item.querySelector('.dropdown');
     if (dropdown && link) {
+      // Add visual cue class so CSS can style expandable items
+      item.classList.add('has-dropdown');
       link.addEventListener('click', (e) => {
         if (window.innerWidth <= 1024) {
           e.preventDefault();
@@ -75,6 +77,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Dropdown sub-links on mobile: navigate and close nav
+  document.querySelectorAll('.dropdown-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        navItems.forEach(item => item.classList.remove('mobile-open'));
+        if (nav) nav.classList.remove('open');
+        if (hamburger) hamburger.classList.remove('open');
+      }
+    });
+  });
+
   // Close mobile nav and dropdowns when clicking a non-dropdown link
   document.querySelectorAll('.nav-link:not([href="#"])').forEach(link => {
     link.addEventListener('click', () => {
@@ -86,6 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
+  });
+
+  // Close nav when clicking outside
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 1024 && nav && nav.classList.contains('open')) {
+      if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+        nav.classList.remove('open');
+        hamburger.classList.remove('open');
+        navItems.forEach(item => item.classList.remove('mobile-open'));
+      }
+    }
   });
 
   // Reset mobile-open states when resizing back to desktop

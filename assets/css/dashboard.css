@@ -436,8 +436,12 @@
 @media (max-width: 1024px) {
   .dash-menu-toggle { display: flex; }
 
-  .dash-topbar-row { gap: 0.5rem; }
-  .dash-topbar h2 { font-size: 1.3rem; }
+  .dash-topbar-row { gap: 0.5rem; flex-wrap: nowrap; align-items: center; }
+  .dash-topbar-left { min-width: 0; flex: 1; overflow: hidden; }
+  .dash-topbar-left h2 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.25rem; }
+  .dash-actions { flex-shrink: 0; gap: 0.5rem; }
+  .dash-toggles { gap: 0.4rem; }
+  .theme-toggle, .rtl-toggle { padding: 0.35rem 0.7rem; font-size: 0.82rem; }
 
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
 

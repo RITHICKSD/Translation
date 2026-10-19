@@ -697,6 +697,16 @@ tr:hover td { background: var(--bg-alt); }
 
   .icon-box { width: 2.75rem; height: 2.75rem; font-size: 1.1rem; }
   .icon-box-lg { width: 3.25rem; height: 3.25rem; font-size: 1.4rem; }
+
+  /* Ensure hero CTA buttons never overflow on small screens */
+  .hero-section .flex,
+  .hero-section .flex-center {
+    flex-wrap: wrap !important;
+  }
+  .hero-section .btn-lg {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ── Timeline (Growth Journey) Styles ── */
@@ -878,4 +888,65 @@ tr:hover td { background: var(--bg-alt); }
 
 [data-theme="dark"] .timeline .card p {
   color: var(--text-muted);
+}
+
+/* ── bg-gradient-primary (used in CTA sections on Services, Industries) ── */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #0F172A 0%, #0891B2 100%);
+}
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+}
+
+/* Force all text in gradient CTA sections to always be white */
+.bg-gradient-primary h1,
+.bg-gradient-primary h2,
+.bg-gradient-primary h3,
+.bg-gradient-primary h4,
+.bg-gradient-primary p,
+.bg-gradient-primary span,
+.bg-gradient-primary strong {
+  color: #FFFFFF !important;
+}
+
+.bg-gradient-dark h1,
+.bg-gradient-dark h2,
+.bg-gradient-dark h3,
+.bg-gradient-dark h4,
+.bg-gradient-dark p,
+.bg-gradient-dark span,
+.bg-gradient-dark strong {
+  color: #FFFFFF !important;
+}
+
+/* Dark mode: same force-white for gradient sections */
+[data-theme="dark"] .bg-gradient-primary h1,
+[data-theme="dark"] .bg-gradient-primary h2,
+[data-theme="dark"] .bg-gradient-primary h3,
+[data-theme="dark"] .bg-gradient-primary h4,
+[data-theme="dark"] .bg-gradient-primary p,
+[data-theme="dark"] .bg-gradient-dark h1,
+[data-theme="dark"] .bg-gradient-dark h2,
+[data-theme="dark"] .bg-gradient-dark h3,
+[data-theme="dark"] .bg-gradient-dark h4,
+[data-theme="dark"] .bg-gradient-dark p {
+  color: #FFFFFF !important;
+}
+
+/* ── Mobile nav: has-dropdown visual cue ── */
+@media (max-width: 1024px) {
+  .nav-item.has-dropdown > .nav-link {
+    background: var(--bg-alt);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+  }
+  .nav-item.has-dropdown > .nav-link .chevron {
+    transition: transform 0.3s ease;
+  }
+  .nav-item.has-dropdown.mobile-open > .nav-link .chevron {
+    transform: rotate(180deg);
+  }
+  .nav-item.has-dropdown > .nav-link::after {
+    content: '';
+  }
 }

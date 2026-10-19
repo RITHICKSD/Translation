@@ -11,6 +11,11 @@
   overflow: hidden;
 }
 
+/* Match header container padding exactly */
+.site-footer .container {
+  padding-inline: 1.5rem;
+}
+
 .footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr;
@@ -159,12 +164,14 @@
 /* ── 768px ── */
 @media (max-width: 768px) {
   .site-footer { padding-top: 3rem; padding-bottom: 1.5rem; }
+  .site-footer .container { padding-inline: 1rem; }
   .footer-top { margin-bottom: 2rem; gap: 1.75rem; }
 }
 
 /* ── 480px (360px phones) ── */
 @media (max-width: 480px) {
   .site-footer { padding-top: 2.25rem; padding-bottom: 1.25rem; }
+  .site-footer .container { padding-inline: 0.875rem; }
   .footer-top { gap: 1.25rem; margin-bottom: 1.5rem; }
 
   .footer-title { font-size: 0.95rem; margin-bottom: 0.875rem; }
